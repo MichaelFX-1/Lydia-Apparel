@@ -3,7 +3,7 @@
    Pure vanilla JS + GSAP/ScrollTrigger (CDN)
    ========================================================= */
 
-const WHATSAPP_NUMBER = '2348000000000'; // <- replace with real number
+const WHATSAPP_NUMBER = '+2348145024193'; // <- replace with real number
 
 /* ---------- Product catalogue ---------- */
 const PRODUCTS = [
