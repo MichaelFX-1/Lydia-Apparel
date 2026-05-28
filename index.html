@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Lydia's Apparel — Premium luxury fashion fabrics. Bespoke craftsmanship, rich materials, and worldwide WhatsApp ordering." />
+  <title>Lydia's Apparel — Premium Luxury Fashion Fabrics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Italiana&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Three.js ambient particle background -->
+  <canvas id="bgCanvas" class="bg-canvas"></canvas>
+
+  <!-- Custom cursor -->
+  <div class="cursor"></div>
+  <div class="cursor-trail"></div>
+
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+      <span class="loader-mark">L</span>
+      <span class="loader-text">Lydia's Apparel</span>
+      <div class="loader-bar"><div class="loader-fill"></div></div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <header class="nav" id="nav">
+    <a href="#home" class="nav-logo">
+      <span class="logo-mark">L</span>
+      <span class="logo-word">Lydia's Apparel</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#collections">Collections</a>
+      <a href="#best-sellers">Best Sellers</a>
+      <a href="#craft">Craft</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#story">Story</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <span class="theme-icon">☾</span>
+      </button>
+      <button class="cart-btn" id="cartBtn" aria-label="Open cart">
+        <span>Bag</span>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+      <div class="grain"></div>
+    </div>
+
+    <div class="hero-content">
+      <p class="eyebrow"><span></span>Maison de Lydia · Est. Lagos</p>
+      <h1 class="hero-title">
+        <span class="line"><em>Wear</em> the language</span>
+        <span class="line">of <em>luxury</em>.</span>
+      </h1>
+      <p class="hero-sub">A curated atelier of premium fabrics — woven, dyed and finished for those who dress with intention.</p>
+      <div class="hero-cta">
+        <a href="#collections" class="btn btn-primary">Explore Collections</a>
+        <a href="#story" class="btn btn-ghost">Our Story →</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>120+</strong><span>Premium fabrics</span></div>
+        <div><strong>14yr</strong><span>Of craft</span></div>
+        <div><strong>30+</strong><span>Countries shipped</span></div>
+      </div>
+    </div>
+
+    <div class="hero-stage" id="heroStage">
+      <div class="ring ring-1"></div>
+      <div class="ring ring-2"></div>
+      <div class="ring ring-3"></div>
+      <div class="float-card" data-depth="0.6" style="--i:0"><img src="assets/fabric-04.jpg" alt="Royal purple satin" loading="eager"/></div>
+      <div class="float-card" data-depth="1.2" style="--i:1"><img src="assets/fabric-02.jpg" alt="Moss green silk" loading="eager"/></div>
+      <div class="float-card" data-depth="0.9" style="--i:2"><img src="assets/fabric-05.jpg" alt="Sequin gala stack" loading="eager"/></div>
+      <div class="float-card" data-depth="1.5" style="--i:3"><img src="assets/fabric-07.jpg" alt="Heritage tones" loading="lazy"/></div>
+      <div class="float-card" data-depth="0.8" style="--i:4"><img src="assets/fabric-13.jpg" alt="Celestial brocade" loading="lazy"/></div>
+      <div class="float-card" data-depth="1.1" style="--i:5"><img src="assets/fabric-18.jpg" alt="Emerald beaded" loading="lazy"/></div>
+      <div class="float-card" data-depth="1.3" style="--i:6"><img src="assets/fabric-26.jpg" alt="Pearl couture" loading="lazy"/></div>
+      <div class="float-card" data-depth="0.7" style="--i:7"><img src="assets/fabric-25.jpg" alt="Aegean jacquard" loading="lazy"/></div>
+      <div class="float-card" data-depth="1.0" style="--i:8"><img src="assets/fabric-28.jpg" alt="Gilded pearl mermaid" loading="lazy"/></div>
+      <div class="float-card" data-depth="0.85" style="--i:9"><img src="assets/fabric-23.jpg" alt="Paisley lace" loading="lazy"/></div>
+      <div class="float-card center" data-depth="0.3"><img src="assets/fabric-01.jpg" alt="Signature spectrum" loading="eager"/></div>
+      <span class="orbit-dot d1"></span>
+      <span class="orbit-dot d2"></span>
+      <span class="orbit-dot d3"></span>
+    </div>
+
+    <div class="marquee">
+      <div class="marquee-track">
+        <span>Atelier Couture</span><span>·</span>
+        <span>Limited Edition</span><span>·</span>
+        <span>Hand-Finished</span><span>·</span>
+        <span>Worldwide Delivery</span><span>·</span>
+        <span>Atelier Couture</span><span>·</span>
+        <span>Limited Edition</span><span>·</span>
+        <span>Hand-Finished</span><span>·</span>
+        <span>Worldwide Delivery</span><span>·</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANIMATED FABRIC STRIP (luxury divider) -->
+  <section class="fabric-strip" aria-hidden="true">
+    <div class="fabric-strip-track" id="fabricStripTrack"></div>
+  </section>
+
+  <!-- INTRO BANNER -->
+  <section class="intro reveal">
+    <h2 class="display">
+      Threads of <em>quiet</em> opulence, cut for a <em>modern</em> wardrobe.
+    </h2>
+    <p class="lede">From mulberry silks to peached cottons and bespoke cashmere blends — every roll on our shelf has been hand-selected by Lydia herself, from mills in Como, Lyon and Lagos.</p>
+  </section>
+
+  <!-- FEATURED COLLECTIONS -->
+  <section class="section" id="collections">
+    <header class="section-head">
+      <p class="kicker">01 — Featured Collections</p>
+      <h2 class="section-title">The Houses of <em>Lydia</em></h2>
+      <p class="section-sub">Three signature houses, each a distinct mood within one luxury wardrobe.</p>
+    </header>
+    <div class="collections-grid">
+      <article class="collection-card tilt" data-tilt>
+        <div class="cc-image"><img src="assets/fabric-04.jpg" alt="Maison Violet collection" loading="lazy"/></div>
+        <div class="cc-body">
+          <p class="cc-tag">Maison Violet</p>
+          <h3>Evening Silks</h3>
+          <p>Lustrous purples and midnight satins for galas, dinners and the long after-hours.</p>
+          <a class="link-arrow" href="#trending">View Pieces →</a>
+        </div>
+      </article>
+      <article class="collection-card tilt" data-tilt>
+        <div class="cc-image"><img src="assets/fabric-05.jpg" alt="Maison Étoile sequins" loading="lazy"/></div>
+        <div class="cc-body">
+          <p class="cc-tag">Maison Étoile</p>
+          <h3>Sequin Couture</h3>
+          <p>Beaded textiles that hold light like jewellery — the language of celebration.</p>
+          <a class="link-arrow" href="#limited">View Pieces →</a>
+        </div>
+      </article>
+      <article class="collection-card tilt" data-tilt>
+        <div class="cc-image"><img src="assets/fabric-10.jpg" alt="Maison Atelier suiting" loading="lazy"/></div>
+        <div class="cc-body">
+          <p class="cc-tag">Maison Atelier</p>
+          <h3>Bespoke Suiting</h3>
+          <p>Italian wools and English check — tailored fabrics for sharply cut silhouettes.</p>
+          <a class="link-arrow" href="#best-sellers">View Pieces →</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- LUXURY DIVIDER -->
+  <div class="lux-divider"><span class="ld-line"></span><span class="ld-mark">✦</span><span class="ld-line"></span></div>
+
+  <!-- TRENDING / PRODUCTS -->
+  <section class="section" id="trending">
+    <header class="section-head">
+      <p class="kicker">02 — Trending Apparel</p>
+      <h2 class="section-title">This Season's <em>Favourites</em></h2>
+      <p class="section-sub">Hand-picked fabrics in highest rotation this month. Limited yardage per colour.</p>
+    </header>
+    <div class="product-grid" id="productGrid"><!-- injected by JS --></div>
+  </section>
+
+  <!-- COUTURE 3D COVERFLOW SHOWCASE -->
+  <section class="section couture-showcase" id="couture">
+    <header class="section-head">
+      <p class="kicker">02b — Maison Showcase</p>
+      <h2 class="section-title">A <em>runway</em> in three dimensions</h2>
+      <p class="section-sub">Glide through the atelier — every roll, rotating in space.</p>
+    </header>
+    <div class="swiper coutureSwiper">
+      <div class="swiper-wrapper" id="coutureSlides"></div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </section>
+
+  <!-- LUXURY DIVIDER -->
+  <div class="lux-divider"><span class="ld-line"></span><span class="ld-mark">✦</span><span class="ld-line"></span></div>
+
+  <!-- SEASONAL -->
+  <section class="section seasonal" id="seasonal">
+    <div class="seasonal-text reveal">
+      <p class="kicker light">03 — Premium Seasonal</p>
+      <h2 class="section-title">Harmattan <em>Edit</em> '26</h2>
+      <p>Earth tones, dry-season golds, and the heavier silks that hold their drape when the air goes still. A short-run capsule available only through the season.</p>
+      <a class="btn btn-primary" href="#best-sellers">Shop the Edit</a>
+    </div>
+    <div class="seasonal-stack">
+      <img src="assets/fabric-07.jpg" alt="Harmattan tones" loading="lazy"/>
+      <img src="assets/fabric-06.jpg" alt="Seasonal palette" loading="lazy"/>
+    </div>
+  </section>
+
+  <!-- COUTURE PARADE — sliding mannequin silhouettes -->
+  <section class="parade" aria-hidden="true">
+    <div class="parade-track">
+      <div class="mannequin"><div class="mq-head"></div><div class="mq-body" style="--mq:url('assets/fabric-26.jpg')"></div><div class="mq-train" style="--mq:url('assets/fabric-26.jpg')"></div></div>
+      <div class="mannequin"><div class="mq-head"></div><div class="mq-body" style="--mq:url('assets/fabric-04.jpg')"></div><div class="mq-train" style="--mq:url('assets/fabric-04.jpg')"></div></div>
+      <div class="mannequin"><div class="mq-head"></div><div class="mq-body" style="--mq:url('assets/fabric-28.jpg')"></div><div class="mq-train" style="--mq:url('assets/fabric-28.jpg')"></div></div>
+      <div class="mannequin"><div class="mq-head"></div><div class="mq-body" style="--mq:url('assets/fabric-25.jpg')"></div><div class="mq-train" style="--mq:url('assets/fabric-25.jpg')"></div></div>
+      <div class="mannequin"><div class="mq-head"></div><div class="mq-body" style="--mq:url('assets/fabric-18.jpg')"></div><div class="mq-train" style="--mq:url('assets/fabric-18.jpg')"></div></div>
+      <div class="mannequin"><div class="mq-head"></div><div class="mq-body" style="--mq:url('assets/fabric-22.jpg')"></div><div class="mq-train" style="--mq:url('assets/fabric-22.jpg')"></div></div>
+      <div class="mannequin"><div class="mq-head"></div><div class="mq-body" style="--mq:url('assets/fabric-13.jpg')"></div><div class="mq-train" style="--mq:url('assets/fabric-13.jpg')"></div></div>
+      <div class="mannequin"><div class="mq-head"></div><div class="mq-body" style="--mq:url('assets/fabric-23.jpg')"></div><div class="mq-train" style="--mq:url('assets/fabric-23.jpg')"></div></div>
+      <!-- duplicate for loop -->
+      <div class="mannequin"><div class="mq-head"></div><div class="mq-body" style="--mq:url('assets/fabric-26.jpg')"></div><div class="mq-train" style="--mq:url('assets/fabric-26.jpg')"></div></div>
+      <div class="mannequin"><div class="mq-head"></div><div class="mq-body" style="--mq:url('assets/fabric-04.jpg')"></div><div class="mq-train" style="--mq:url('assets/fabric-04.jpg')"></div></div>
+      <div class="mannequin"><div class="mq-head"></div><div class="mq-body" style="--mq:url('assets/fabric-28.jpg')"></div><div class="mq-train" style="--mq:url('assets/fabric-28.jpg')"></div></div>
+      <div class="mannequin"><div class="mq-head"></div><div class="mq-body" style="--mq:url('assets/fabric-25.jpg')"></div><div class="mq-train" style="--mq:url('assets/fabric-25.jpg')"></div></div>
+    </div>
+    <span class="parade-floor"></span>
+  </section>
+
+  <!-- TACTILE 3D CUBE -->
+  <section class="section tactile" id="tactile">
+    <header class="section-head">
+      <p class="kicker">04b — Tactile Object</p>
+      <h2 class="section-title">Turn the <em>fabric</em> in your hand</h2>
+      <p class="section-sub">Drag, or let it spin — six signature textiles on a single object.</p>
+    </header>
+    <div class="cube-stage" id="cubeStage">
+      <div class="cube" id="cube">
+        <div class="cube-face f-front"><img src="assets/fabric-13.jpg" alt=""/><span>Celestial Brocade</span></div>
+        <div class="cube-face f-back"><img src="assets/fabric-18.jpg" alt=""/><span>Emerald Beaded</span></div>
+        <div class="cube-face f-right"><img src="assets/fabric-20.jpg" alt=""/><span>Amber Silk</span></div>
+        <div class="cube-face f-left"><img src="assets/fabric-15.jpg" alt=""/><span>Saffron Crepe</span></div>
+        <div class="cube-face f-top"><img src="assets/fabric-17.jpg" alt=""/><span>Lilac Whisper</span></div>
+        <div class="cube-face f-bottom"><img src="assets/fabric-11.jpg" alt=""/><span>Pastel Pyramid</span></div>
+      </div>
+      <div class="cube-glow"></div>
+    </div>
+  </section>
+
+  <!-- BEST SELLERS -->
+  <section class="section" id="best-sellers">
+    <header class="section-head">
+      <p class="kicker">04 — Best Sellers</p>
+      <h2 class="section-title">Loved by the <em>House</em></h2>
+    </header>
+    <div class="product-grid" id="bestGrid"></div>
+  </section>
+
+  <!-- LIMITED EDITION -->
+  <section class="section limited" id="limited">
+    <header class="section-head reveal">
+      <p class="kicker">05 — Limited Edition</p>
+      <h2 class="section-title">Only a <em>Few</em> Rolls Remain</h2>
+      <p class="section-sub">Numbered editions, never re-cut. When they're gone, they're archived forever.</p>
+    </header>
+    <div class="limited-row">
+      <div class="limited-card reveal">
+        <span class="badge gold">Edition · 12/40</span>
+        <img src="assets/fabric-04.jpg" alt="Royal Violet Satin"/>
+        <h3>Royal Violet Satin</h3>
+        <p>Mulberry silk woven in Como. Iridescent purple with a hand of pure water.</p>
+      </div>
+      <div class="limited-card reveal">
+        <span class="badge gold">Edition · 03/25</span>
+        <img src="assets/fabric-05.jpg" alt="Étoile Sequin Mesh"/>
+        <h3>Étoile Sequin Mesh</h3>
+        <p>Hand-beaded across a stretch tulle base — for couture evening pieces.</p>
+      </div>
+      <div class="limited-card reveal">
+        <span class="badge gold">Edition · 07/30</span>
+        <img src="assets/fabric-02.jpg" alt="Moss Silk Crepe"/>
+        <h3>Moss Silk Crepe</h3>
+        <p>A deep, living green with a sand-washed finish. Drapes like rainfall.</p>
+      </div>
+      <div class="limited-card reveal">
+        <span class="badge gold">Edition · 02/15</span>
+        <img src="assets/fabric-26.jpg" alt="Pearl Cascade Couture"/>
+        <h3>Pearl Cascade Couture</h3>
+        <p>Hand-set pearl seashell scallops on bridal tulle. Editioned for one bride per season.</p>
+      </div>
+      <div class="limited-card reveal">
+        <span class="badge gold">Edition · 09/20</span>
+        <img src="assets/fabric-28.jpg" alt="Gilded Pearl Mermaid"/>
+        <h3>Gilded Pearl Mermaid</h3>
+        <p>Liquid gold pearl-beaded mermaid panel — ceremonial richness at its most sculpted.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROTATING FABRIC ORBIT — new fabrics in motion -->
+  <section class="section orbit-section">
+    <header class="section-head">
+      <p class="kicker">05b — Latest Drops</p>
+      <h2 class="section-title">Eight new <em>arrivals</em> in orbit</h2>
+      <p class="section-sub">The most recent rolls to enter the atelier — rotating, weightless, awaiting your selection.</p>
+    </header>
+    <div class="orbit-stage">
+      <div class="orbit-core">✦</div>
+      <div class="orbit-ring or-1">
+        <span class="orbit-thumb" style="--a:0"><img src="assets/fabric-21.jpg" alt="Camel Fringe"/></span>
+        <span class="orbit-thumb" style="--a:90"><img src="assets/fabric-22.jpg" alt="Rouge Chiffon"/></span>
+        <span class="orbit-thumb" style="--a:180"><img src="assets/fabric-23.jpg" alt="Paisley Lace"/></span>
+        <span class="orbit-thumb" style="--a:270"><img src="assets/fabric-24.jpg" alt="Waffle Trinity"/></span>
+      </div>
+      <div class="orbit-ring or-2">
+        <span class="orbit-thumb" style="--a:45"><img src="assets/fabric-25.jpg" alt="Aegean Jacquard"/></span>
+        <span class="orbit-thumb" style="--a:135"><img src="assets/fabric-26.jpg" alt="Pearl Cascade"/></span>
+        <span class="orbit-thumb" style="--a:225"><img src="assets/fabric-27.jpg" alt="Beaded Library"/></span>
+        <span class="orbit-thumb" style="--a:315"><img src="assets/fabric-28.jpg" alt="Gilded Pearl"/></span>
+      </div>
+      <span class="orbit-spark s1"></span>
+      <span class="orbit-spark s2"></span>
+      <span class="orbit-spark s3"></span>
+      <span class="orbit-spark s4"></span>
+    </div>
+  </section>
+
+  <!-- ANIMATED THUMB MARQUEE (reverse) -->
+  <section class="fabric-strip reverse" aria-hidden="true">
+    <div class="fabric-strip-track" id="fabricStripTrack2"></div>
+  </section>
+
+  <!-- NEW ARRIVALS -->
+  <section class="section" id="new">
+    <header class="section-head">
+      <p class="kicker">06 — New Arrivals</p>
+      <h2 class="section-title">Fresh off the <em>Loom</em></h2>
+    </header>
+    <div class="product-grid" id="newGrid"></div>
+  </section>
+
+  <!-- LUXURY DIVIDER -->
+  <div class="lux-divider"><span class="ld-line"></span><span class="ld-mark">✦</span><span class="ld-line"></span></div>
+
+  <!-- COMPARISON -->
+  <section class="section compare">
+    <header class="section-head">
+      <p class="kicker">07 — Fashion Comparison</p>
+      <h2 class="section-title">Why Lydia, <em>not</em> the rest?</h2>
+    </header>
+    <div class="compare-grid">
+      <div class="compare-col">
+        <h4>High-Street Fabric</h4>
+        <ul>
+          <li>Polyester-heavy blends</li>
+          <li>Mass-produced rolls</li>
+          <li>Inconsistent dye lots</li>
+          <li>No traceable mill</li>
+          <li>Flat, paper-like hand</li>
+        </ul>
+      </div>
+      <div class="compare-col featured">
+        <h4>Lydia's Atelier</h4>
+        <ul>
+          <li>Natural fibres &amp; silks</li>
+          <li>Numbered, limited cuts</li>
+          <li>Hand-matched dye lots</li>
+          <li>Mill of origin disclosed</li>
+          <li>Living drape and weight</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CRAFTSMANSHIP -->
+  <section class="section craft" id="craft">
+    <header class="section-head reveal">
+      <p class="kicker">08 — Craftsmanship</p>
+      <h2 class="section-title">A house built on <em>hand-work</em></h2>
+    </header>
+    <div class="craft-grid">
+      <div class="craft-step reveal"><span>01</span><h4>Sourcing</h4><p>Mills in Como, Lyon, Aleppo and Lagos — visited in person each season.</p></div>
+      <div class="craft-step reveal"><span>02</span><h4>Selection</h4><p>Every roll is inspected against the light for weave consistency and dye depth.</p></div>
+      <div class="craft-step reveal"><span>03</span><h4>Finishing</h4><p>Edges are hand-bound; rolls are pressed, wrapped and sealed in our atelier.</p></div>
+      <div class="craft-step reveal"><span>04</span><h4>Delivery</h4><p>Cushioned in tissue, dispatched in numbered crates, tracked end-to-end.</p></div>
+    </div>
+  </section>
+
+  <!-- MATERIAL QUALITY -->
+  <section class="section material" id="story">
+    <div class="material-text reveal">
+      <p class="kicker">09 — Material Story</p>
+      <h2 class="section-title">The <em>materials</em> behind the maison</h2>
+      <p>Mulberry silk for fall. Worsted Italian wool for tailoring. Egyptian cotton for shirting. Hand-beaded mesh for evening. Every fibre chosen for the way it lives on the body — not just the way it looks on a shelf.</p>
+      <ul class="material-list">
+        <li><strong>Silk</strong><span>Mulberry, charmeuse, crepe</span></li>
+        <li><strong>Wool</strong><span>Super 120s &amp; 150s, English check</span></li>
+        <li><strong>Cotton</strong><span>Egyptian, peached, brushed twill</span></li>
+        <li><strong>Beaded</strong><span>Hand-sewn tulle, sequin lace</span></li>
+      </ul>
+    </div>
+    <div class="material-imgs">
+      <img src="assets/fabric-02.jpg" alt="Silk roll" loading="lazy"/>
+      <img src="assets/fabric-08.jpg" alt="Wool rolls" loading="lazy"/>
+      <img src="assets/fabric-09.jpg" alt="Cotton stack" loading="lazy"/>
+      <img src="assets/fabric-05.jpg" alt="Beaded stack" loading="lazy"/>
+    </div>
+  </section>
+
+  <!-- SLIDING SHOWCASE / GALLERY -->
+  <section class="section gallery-section" id="gallery">
+    <header class="section-head">
+      <p class="kicker">10 — Fashion Gallery</p>
+      <h2 class="section-title">An <em>archive</em> in motion</h2>
+    </header>
+    <div class="slider" id="slider">
+      <div class="slides">
+        <div class="slide"><img src="assets/fabric-01.jpg" alt=""/><div class="slide-cap"><span>Spectrum I</span><p>The full palette, in one frame.</p></div></div>
+        <div class="slide"><img src="assets/fabric-04.jpg" alt=""/><div class="slide-cap"><span>Royal Violet</span><p>Mulberry silk, Como.</p></div></div>
+        <div class="slide"><img src="assets/fabric-05.jpg" alt=""/><div class="slide-cap"><span>Étoile Sequin</span><p>Hand-beaded, numbered.</p></div></div>
+        <div class="slide"><img src="assets/fabric-08.jpg" alt=""/><div class="slide-cap"><span>Atelier Suiting</span><p>Super 150s wools.</p></div></div>
+        <div class="slide"><img src="assets/fabric-07.jpg" alt=""/><div class="slide-cap"><span>Harmattan Edit</span><p>Earth tones, season '26.</p></div></div>
+      </div>
+      <div class="slider-controls">
+        <button class="sl-prev" aria-label="Previous">←</button>
+        <button class="sl-next" aria-label="Next">→</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CUSTOMER EXPERIENCE -->
+  <section class="section experience">
+    <header class="section-head reveal">
+      <p class="kicker">11 — The Lydia Experience</p>
+      <h2 class="section-title">A <em>concierge</em>, not a checkout</h2>
+      <p class="section-sub">From the first WhatsApp message to the moment the crate is unwrapped — every step is hand-held by the atelier.</p>
+    </header>
+    <div class="experience-grid">
+      <div class="exp-card reveal"><span>✦</span><h4>Personal Consultation</h4><p>Chat one-to-one with the Lydia team for fabric-matching, yardage and styling.</p></div>
+      <div class="exp-card reveal"><span>✦</span><h4>Swatches on Request</h4><p>We can dispatch hand-cut swatches before you commit to a full cut.</p></div>
+      <div class="exp-card reveal"><span>✦</span><h4>Atelier Packaging</h4><p>Tissue, ribbon, wax seal — every order is presented like a gift.</p></div>
+      <div class="exp-card reveal"><span>✦</span><h4>White-Glove Shipping</h4><p>Tracked, insured, doorstep delivery across 30+ countries.</p></div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section testimonials">
+    <header class="section-head">
+      <p class="kicker">12 — Voices</p>
+      <h2 class="section-title">From the <em>clients</em></h2>
+    </header>
+    <div class="testi-grid">
+      <blockquote class="reveal">"The silk arrived like a piece of jewellery. My tailor said it's the best he's worked with in years."<cite>— Adaeze O., Lagos</cite></blockquote>
+      <blockquote class="reveal">"I've sourced from Milan, Paris, Istanbul. Lydia's stock holds its own — and her service is in a different league."<cite>— M. Conté, Paris</cite></blockquote>
+      <blockquote class="reveal">"Numbered, sealed, perfect. The wool I bought a year ago still looks like the day it arrived."<cite>— Tunde A., London</cite></blockquote>
+    </div>
+  </section>
+
+  <!-- DELIVERY -->
+  <section class="section delivery">
+    <header class="section-head">
+      <p class="kicker">13 — Delivery &amp; Shipping</p>
+      <h2 class="section-title">From our <em>atelier</em> to your door</h2>
+    </header>
+    <div class="delivery-grid">
+      <div class="dl-card"><h4>Lagos</h4><p>Same-day dispatch · 24–48 hr delivery</p></div>
+      <div class="dl-card"><h4>Nigeria-wide</h4><p>2–4 working days via vetted couriers</p></div>
+      <div class="dl-card"><h4>West Africa</h4><p>3–6 working days, tracked &amp; insured</p></div>
+      <div class="dl-card"><h4>Worldwide</h4><p>5–10 working days · DHL Express</p></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq-section" id="faq">
+    <header class="section-head">
+      <p class="kicker">14 — Questions</p>
+      <h2 class="section-title">Frequently <em>asked</em></h2>
+    </header>
+    <div class="faq-list" id="faqList">
+      <details><summary>How do I place an order?</summary><p>Add fabrics to your bag, open the bag panel, and tap <em>Order via WhatsApp</em>. Your selections are auto-attached to the message.</p></details>
+      <details><summary>What are your payment methods?</summary><p>Bank transfer, card, and international wire. Details are confirmed inside your WhatsApp chat.</p></details>
+      <details><summary>Do you sell by the yard or by the roll?</summary><p>Both. Indicate yardage in WhatsApp, and we'll confirm availability and price.</p></details>
+      <details><summary>Can I request a swatch first?</summary><p>Yes — swatch packs of up to 6 fabrics are dispatched for a small handling fee, refundable on full order.</p></details>
+      <details><summary>What is your returns policy?</summary><p>Unopened, uncut rolls may be returned within 7 days of delivery. Cut yardage is final sale.</p></details>
+      <details><summary>Do you ship internationally?</summary><p>Yes — to 30+ countries via DHL Express, fully tracked and insured.</p></details>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="contact">
+    <div class="footer-glow"></div>
+    <div class="footer-grid">
+      <div class="f-brand">
+        <div class="logo-mark big">L</div>
+        <h3>Lydia's Apparel</h3>
+        <p>Premium luxury fabrics, hand-finished and delivered worldwide. Maison de Lydia · Lagos.</p>
+      </div>
+      <div class="f-col">
+        <h5>Shop</h5>
+        <a href="#collections">Collections</a>
+        <a href="#best-sellers">Best Sellers</a>
+        <a href="#limited">Limited Edition</a>
+        <a href="#new">New Arrivals</a>
+      </div>
+      <div class="f-col">
+        <h5>House</h5>
+        <a href="#craft">Craftsmanship</a>
+        <a href="#story">Materials</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="f-col">
+        <h5>Policies</h5>
+        <a href="#delivery">Shipping</a>
+        <a href="#faq">Returns</a>
+        <a href="#faq">Swatches</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="f-col newsletter">
+        <h5>Atelier Letter</h5>
+        <p>Quiet drops. New mills. Limited rolls. Once a month.</p>
+        <div class="news-row">
+          <input type="email" placeholder="your@email.com" id="newsEmail" />
+          <button id="newsBtn">Subscribe</button>
+        </div>
+        <a class="wa-link" id="footerWa" href="#">Order via WhatsApp →</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Lydia's Apparel — Maison de Lydia.</span>
+      <div class="socials">
+        <a href="#">Instagram</a><a href="#">TikTok</a><a href="#">Pinterest</a><a id="waSocial" href="#">WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING WHATSAPP -->
+  <a id="waFloat" class="wa-float" href="#" aria-label="Order via WhatsApp">
+    <svg viewBox="0 0 32 32" width="26" height="26" fill="currentColor"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.8 5.5 2.2 7.9L.5 31.5l7.8-2.1A15.5 15.5 0 0 0 31.5 16C31.5 7.4 24.6.5 16 .5Zm0 28.1c-2.5 0-4.9-.7-7-1.9l-.5-.3-4.6 1.2 1.2-4.5-.3-.5A12.6 12.6 0 1 1 28.6 16 12.6 12.6 0 0 1 16 28.6Zm7.2-9.4c-.4-.2-2.4-1.2-2.8-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.6-.2.3-.5.3-.9.1-.4-.2-1.7-.6-3.2-2-1.2-1-2-2.3-2.2-2.7-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.3-.4.4-.7.1-.3.1-.5 0-.7-.1-.2-.9-2.2-1.3-3-.3-.8-.7-.7-.9-.7h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.3 0 1.9 1.4 3.8 1.6 4.1.2.3 2.8 4.3 6.7 5.8.9.4 1.7.6 2.2.8.9.3 1.8.2 2.4.1.7-.1 2.4-1 2.7-1.9.3-.9.3-1.8.2-1.9-.1-.2-.4-.3-.8-.5Z"/></svg>
+  </a>
+
+  <!-- CART PANEL -->
+  <aside class="cart-panel" id="cartPanel" aria-hidden="true">
+    <div class="cart-head">
+      <h3>Your Bag</h3>
+      <button id="cartClose" aria-label="Close">×</button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-foot">
+      <div class="cart-row"><span>Items</span><strong id="cartSubtotal">—</strong></div>
+      <div class="cart-row small"><span>Pricing</span><span>On request via WhatsApp</span></div>
+      <button class="btn btn-primary full" id="cartCheckout">Enquire via WhatsApp</button>
+      <p class="cart-note">Your selections are auto-attached to the chat. Pricing tailored per yardage.</p>
+    </div>
+  </aside>
+  <div class="cart-backdrop" id="cartBackdrop"></div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <!-- CDN libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script type="module" src="script.js"></script>
+</body>
+</html>
