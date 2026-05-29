@@ -3,7 +3,7 @@
    Pure vanilla JS + GSAP/ScrollTrigger (CDN)
    ========================================================= */
 
-const WHATSAPP_NUMBER = '+2348145024193'; // <- replace with real number
+const WHATSAPP_NUMBER = '+2348145024193';
 
 /* ---------- Product catalogue ---------- */
 const PRODUCTS = [
@@ -456,3 +456,60 @@ if (window.gsap && window.ScrollTrigger) {
   gsap.from('.couture-showcase .section-head', { y: 60, opacity: 0, duration: 1, ease: 'expo.out', scrollTrigger: { trigger: '.couture-showcase', start: 'top 80%' } });
   gsap.from('.cube-stage', { scale: 0.4, opacity: 0, duration: 1.4, ease: 'expo.out', scrollTrigger: { trigger: '.cube-stage', start: 'top 85%' } });
 }
+
+/* =========================================================
+   SEASON FEATURE — tilt + glow tracking
+   ========================================================= */
+(function seasonTilt() {
+  document.querySelectorAll('.sf-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width;
+      const y = (e.clientY - r.top) / r.height;
+      const rx = (0.5 - y) * 14;
+      const ry = (x - 0.5) * 16;
+      card.style.animation = 'none';
+      card.style.transform = `perspective(1200px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-8px)`;
+      card.style.setProperty('--mx', (x * 100) + '%');
+      card.style.setProperty('--my', (y * 100) + '%');
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+      card.style.animation = '';
+    });
+  });
+})();
+/* =========================================================
+   HOUSE EDITORIAL — auto-sliding carousel
+   ========================================================= */
+(function houseEditorial() {
+  const slides = document.querySelectorAll('.he-slide');
+  const thumbs = document.querySelectorAll('.he-thumb');
+  if (!slides.length) return;
+  let i = 0, timer;
+  function go(n) {
+    i = (n + slides.length) % slides.length;
+    slides.forEach((s, k) => s.classList.toggle('is-active', k === i));
+    thumbs.forEach((t, k) => t.classList.toggle('is-active', k === i));
+  }
+  function play() { clearInterval(timer); timer = setInterval(() => go(i + 1), 4500); }
+  thumbs.forEach(t => t.addEventListener('click', () => { go(+t.dataset.i); play(); }));
+  play();
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.from('.house-editorial', { y: 60, opacity: 0, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: '.house-editorial', start: 'top 85%' } });
+  }
+})();
+/* =========================================================
+   LOOM REVEAL — scroll-triggered cinematic reveal
+   ========================================================= */
+(function loomReveal() {
+  if (!window.gsap || !window.ScrollTrigger) return;
+  gsap.from('.loom-roll', {
+    y: 80, opacity: 0, rotateX: -18, duration: 1.1, ease: 'expo.out', stagger: 0.12,
+    scrollTrigger: { trigger: '.loom-reveal', start: 'top 85%' }
+  });
+  gsap.from('.season-feature .sf-card', {
+    y: 90, opacity: 0, scale: .92, duration: 1.2, ease: 'expo.out', stagger: 0.15,
+    scrollTrigger: { trigger: '.season-feature', start: 'top 85%' }
+  });
+})();

@@ -178,6 +178,56 @@
       <h2 class="section-title">This Season's <em>Favourites</em></h2>
       <p class="section-sub">Hand-picked fabrics in highest rotation this month. Limited yardage per colour.</p>
     </header>
+    
+<!-- TRIPTYCH — 3 large 3D feature cards -->
+    <div class="season-feature" id="seasonFeature">
+      <article class="sf-card tilt-3d" data-depth>
+        <div class="sf-glow"></div>
+        <div class="sf-image"><img src="assets/fabric-01.jpg" alt="Spectrum Roll Edit"/></div>
+        <div class="sf-body">
+          <div class="sf-tags"><span class="chip chip-gold">Trending</span><span class="chip chip-violet">Limited</span></div>
+          <h3>Spectrum Roll Edit</h3>
+          <p class="sf-meta">Cotton-silk blend · All season</p>
+          <p class="sf-desc">Curated multi-tone roll selection — soft pastels through metropolitan greys.</p>
+          <div class="sf-actions">
+            <button class="btn btn-primary" data-add="p1">Add to Bag</button>
+            <button class="btn btn-ghost" data-order="p1">Enquire</button>
+          </div>
+        </div>
+        <span class="sf-particle p1"></span><span class="sf-particle p2"></span><span class="sf-particle p3"></span><span class="sf-particle p4"></span>
+      </article>
+      <article class="sf-card tilt-3d" data-depth>
+        <div class="sf-glow"></div>
+        <div class="sf-image"><img src="assets/fabric-02.jpg" alt="Moss Silk Crepe"/></div>
+        <div class="sf-body">
+          <div class="sf-tags"><span class="chip chip-violet">Limited</span></div>
+          <h3>Moss Silk Crepe</h3>
+          <p class="sf-meta">Mulberry silk crepe · Spring · Summer</p>
+          <p class="sf-desc">A deep, living green with a sand-washed finish. Drapes like rainfall.</p>
+          <div class="sf-actions">
+            <button class="btn btn-primary" data-add="p2">Add to Bag</button>
+            <button class="btn btn-ghost" data-order="p2">Enquire</button>
+          </div>
+        </div>
+        <span class="sf-particle p1"></span><span class="sf-particle p2"></span><span class="sf-particle p3"></span><span class="sf-particle p4"></span>
+      </article>
+      <article class="sf-card tilt-3d" data-depth>
+        <div class="sf-glow"></div>
+        <div class="sf-image"><img src="assets/fabric-03.jpg" alt="Atelier Shirt Stack"/></div>
+        <div class="sf-body">
+          <div class="sf-tags"><span class="chip chip-gold">Trending</span><span class="chip chip-violet">Limited</span></div>
+          <h3>Atelier Shirt Stack</h3>
+          <p class="sf-meta">Egyptian cotton 120s · All season</p>
+          <p class="sf-desc">Premium shirting cottons — white, wine, navy and azure for bespoke shirting.</p>
+          <div class="sf-actions">
+            <button class="btn btn-primary" data-add="p3">Add to Bag</button>
+            <button class="btn btn-ghost" data-order="p3">Enquire</button>
+          </div>
+        </div>
+        <span class="sf-particle p1"></span><span class="sf-particle p2"></span><span class="sf-particle p3"></span><span class="sf-particle p4"></span>
+      </article>
+    </div>
+    
     <div class="product-grid" id="productGrid"><!-- injected by JS --></div>
   </section>
 
@@ -258,10 +308,59 @@
     <header class="section-head">
       <p class="kicker">04 — Best Sellers</p>
       <h2 class="section-title">Loved by the <em>House</em></h2>
+    <p class="section-sub">Editorial favourites — the rolls our clients return to season after season.</p>
     </header>
+    
+<!-- EDITORIAL CAROUSEL -->
+    <div class="house-editorial">
+      <div class="he-stage">
+        <div class="he-frame" id="heFrame">
+          <div class="he-slide is-active" data-img="assets/fabric-04.jpg">
+            <img src="assets/fabric-04.jpg" alt=""/>
+            <div class="he-cap">
+              <p class="kicker light">House Favourite · 01</p>
+              <h3>Royal Violet Satin</h3>
+              <p>Mulberry silk woven in Como. Iridescent purple with a hand of pure water.</p>
+            </div>
+          </div>
+          <div class="he-slide" data-img="assets/fabric-26.jpg">
+            <img src="assets/fabric-26.jpg" alt=""/>
+            <div class="he-cap">
+              <p class="kicker light">House Favourite · 02</p>
+              <h3>Pearl Cascade Couture</h3>
+              <p>Hand-set pearl seashell scallops on bridal tulle. Editioned for one bride per season.</p>
+            </div>
+          </div>
+          <div class="he-slide" data-img="assets/fabric-18.jpg">
+            <img src="assets/fabric-18.jpg" alt=""/>
+            <div class="he-cap">
+              <p class="kicker light">House Favourite · 03</p>
+              <h3>Emerald Beaded Couture</h3>
+              <p>Deep emerald tulle, hand-beaded with iridescent sequins. Couture grade.</p>
+            </div>
+          </div>
+          <div class="he-slide" data-img="assets/fabric-25.jpg">
+            <img src="assets/fabric-25.jpg" alt=""/>
+            <div class="he-cap">
+              <p class="kicker light">House Favourite · 04</p>
+              <h3>Aegean Floral Jacquard</h3>
+              <p>Teal jacquard with copper, gold and aqua florals. Couture statement textile.</p>
+            </div>
+          </div>
+        </div>
+        <div class="he-glow"></div>
+      </div>
+      <aside class="he-thumbs" id="heThumbs">
+        <button class="he-thumb is-active" data-i="0"><img src="assets/fabric-04.jpg" alt=""/></button>
+        <button class="he-thumb" data-i="1"><img src="assets/fabric-26.jpg" alt=""/></button>
+        <button class="he-thumb" data-i="2"><img src="assets/fabric-18.jpg" alt=""/></button>
+        <button class="he-thumb" data-i="3"><img src="assets/fabric-25.jpg" alt=""/></button>
+      </aside>
+    </div>
+    
     <div class="product-grid" id="bestGrid"></div>
   </section>
-
+    
   <!-- LIMITED EDITION -->
   <section class="section limited" id="limited">
     <header class="section-head reveal">
@@ -341,7 +440,16 @@
     <header class="section-head">
       <p class="kicker">06 — New Arrivals</p>
       <h2 class="section-title">Fresh off the <em>Loom</em></h2>
+    <p class="section-sub">Newly woven, newly arrived — fabric drops that just landed at the atelier.</p>
     </header>
+    <!-- CINEMATIC REVEAL ROLLS -->
+    <div class="loom-reveal">
+      <div class="loom-roll" style="--c:#9b6cff"><img src="assets/fabric-21.jpg" alt=""/><span class="loom-tag">Just landed</span><h4>Camel Fringe Cotton</h4></div>
+      <div class="loom-roll" style="--c:#d9b46a"><img src="assets/fabric-22.jpg" alt=""/><span class="loom-tag">Atelier fresh</span><h4>Rouge Chiffon Veil</h4></div>
+      <div class="loom-roll" style="--c:#5ce6c2"><img src="assets/fabric-24.jpg" alt=""/><span class="loom-tag">New weave</span><h4>Waffle Knit Trinity</h4></div>
+      <div class="loom-roll" style="--c:#ff7aa8"><img src="assets/fabric-17.jpg" alt=""/><span class="loom-tag">From the loom</span><h4>Lilac Satin Whisper</h4></div>
+    </div>
+    
     <div class="product-grid" id="newGrid"></div>
   </section>
 
