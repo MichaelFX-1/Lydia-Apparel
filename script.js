@@ -3,47 +3,110 @@
    Pure vanilla JS + GSAP/ScrollTrigger (CDN)
    ========================================================= */
 
-const WHATSAPP_NUMBER = '+2348145024193';
+const WHATSAPP_NUMBER = '2348145024193'; // Lydia's Apparel WhatsApp
 
-/* ---------- Product catalogue ---------- */
-const PRODUCTS = [
-  { id: 'p1', name: 'Spectrum Roll Edit', img: 'assets/fabric-01.jpg', desc: 'Curated multi-tone roll selection — soft pastels through metropolitan greys.', material: 'Cotton-silk blend', fit: 'Drapes softly, holds shape', season: 'All season', tag: 'trending' },
-  { id: 'p2', name: 'Moss Silk Crepe', img: 'assets/fabric-02.jpg', desc: 'A deep, living green with a sand-washed finish. Drapes like rainfall.', material: 'Mulberry silk crepe', fit: 'Fluid, weighty drape', season: 'Spring · Summer', tag: 'limited' },
-  { id: 'p3', name: 'Atelier Shirt Stack', img: 'assets/fabric-03.jpg', desc: 'Premium shirting cottons — white, wine, navy and azure for bespoke shirting.', material: 'Egyptian cotton 120s', fit: 'Crisp, soft hand', season: 'All season', tag: 'trending' },
-  { id: 'p4', name: 'Royal Violet Satin', img: 'assets/fabric-04.jpg', desc: 'Mulberry silk woven in Como. Iridescent purple with a hand of pure water.', material: 'Silk charmeuse', fit: 'Slip-drape, evening cut', season: 'Evening', tag: 'limited' },
-  { id: 'p5', name: 'Étoile Sequin Mesh', img: 'assets/fabric-05.jpg', desc: 'Hand-beaded across a stretch tulle base — for couture evening pieces.', material: 'Beaded tulle', fit: 'Stretch, body-skim', season: 'Evening · Gala', tag: 'limited' },
-  { id: 'p6', name: 'Heritage Embossed', img: 'assets/fabric-06.jpg', desc: 'Floral-embossed satin in mature jewel tones. Quietly opulent.', material: 'Satin jacquard', fit: 'Structured drape', season: 'Autumn · Winter', tag: 'new' },
-  { id: 'p7', name: 'Harmattan Edit Pack', img: 'assets/fabric-07.jpg', desc: 'Wine, dark green, gold, black, burnt orange and dark brown — the season palette.', material: 'Brushed cotton twill', fit: 'Tailored, peached', season: 'Harmattan', tag: 'new' },
-  { id: 'p8', name: 'Atelier Suiting Rolls', img: 'assets/fabric-08.jpg', desc: 'Italian wool checks and pinstripes for bespoke suits and overcoats.', material: 'Super 150s wool', fit: 'Tailoring-weight', season: 'Autumn · Winter', tag: 'trending' },
-  { id: 'p9', name: 'Bespoke Wool Stack', img: 'assets/fabric-10.jpg', desc: 'Worsted wools in storm grey, ivory, sand and indigo. Built for sharp suits.', material: 'Worsted wool', fit: 'Holds a crease beautifully', season: 'All season', tag: 'trending' },
-  { id: 'p10', name: 'Atelier Capsule Stack', img: 'assets/fabric-09.jpg', desc: 'A complete wardrobe palette in one capsule — coral, teal, plum, oxford.', material: 'Cotton-poly blend', fit: 'Versatile shirting weight', season: 'All season', tag: 'new' },
-  { id: 'p11', name: 'Pastel Roll Pyramid', img: 'assets/fabric-11.jpg', desc: 'A pyramid of pastel rolls — rose, lavender, sage, sky and mint. Soft daywear palette.', material: 'Premium cotton blend', fit: 'Soft drape, light weight', season: 'Spring · Summer', tag: 'new' },
-  { id: 'p12', name: 'Honeycomb Waffle Stack', img: 'assets/fabric-12.jpg', desc: 'Layered waffle-weave textures in chocolate, sky, olive, ivory, navy, camel and noir.', material: 'Waffle-weave cotton', fit: 'Plush, textured hand', season: 'All season', tag: 'trending' },
-  { id: 'p13', name: 'Celestial Brocade', img: 'assets/fabric-13.jpg', desc: 'Cornflower blue ground with gold-foiled botanical brocade. Statement occasion fabric.', material: 'Metallic jacquard brocade', fit: 'Structured, regal', season: 'Evening · Bridal', tag: 'limited' },
-  { id: 'p14', name: 'Olive Pinstripe Drape', img: 'assets/fabric-14.jpg', desc: 'Olive green ground with delicate gold pinstripes. Soft drape with quiet luxury.', material: 'Silk-touch polyester', fit: 'Fluid drape, evening cut', season: 'All season', tag: 'trending' },
-  { id: 'p15', name: 'Saffron Crepe Fold', img: 'assets/fabric-15.jpg', desc: 'Deep saffron crepe with raw fringed selvedge. Warm, rich, ceremonial.', material: 'Heavy crepe', fit: 'Tailored drape', season: 'Autumn · Festive', tag: 'new' },
-  { id: 'p16', name: 'Pique Trio — Mint · Ivory · Noir', img: 'assets/fabric-16.jpg', desc: 'A trio of fine pique-textured cottons in mint, ivory and noir. Modern minimal staples.', material: 'Pique cotton', fit: 'Crisp, dimensional', season: 'Spring · Summer', tag: 'trending' },
-  { id: 'p17', name: 'Lilac Satin Whisper', img: 'assets/fabric-17.jpg', desc: 'Soft lilac satin with raw-edge selvedge. Romantic and luminous against the skin.', material: 'Premium satin', fit: 'Slip drape, fluid', season: 'Spring · Evening', tag: 'new' },
-  { id: 'p18', name: 'Emerald Beaded Couture', img: 'assets/fabric-18.jpg', desc: 'Deep emerald tulle hand-beaded with floral motifs and iridescent sequins. Couture-grade.', material: 'Hand-beaded tulle', fit: 'Sheer, body-skim', season: 'Gala · Bridal', tag: 'limited' },
-  { id: 'p19', name: 'Spectrum Drape Wall', img: 'assets/fabric-19.jpg', desc: 'Floor-length drape rolls in tan, periwinkle, rose, wine, navy, sun, plum, cream and indigo.', material: 'Stretch jersey drape', fit: 'Body-flattering, ruched', season: 'All season', tag: 'trending' },
-  { id: 'p20', name: 'Amber Liquid Silk', img: 'assets/fabric-20.jpg', desc: 'Liquid amber silk with luminous folds. Ceremonial richness for show-stopping pieces.', material: 'Liquid silk satin', fit: 'Fluid, weighty drape', season: 'Evening · Festive', tag: 'limited' },
-  { id: 'p21', name: 'Camel Fringe Cotton', img: 'assets/fabric-21.jpg', desc: 'Warm camel cotton with hand-frayed fringe edges set against a backdrop of jewel-tone rolls.', material: 'Premium brushed cotton', fit: 'Soft, structured drape', season: 'All season', tag: 'new' },
-  { id: 'p22', name: 'Rouge Chiffon Veil', img: 'assets/fabric-22.jpg', desc: 'Cherry-red chiffon with whisper-thin selvedge. Romantic, weightless, luminous.', material: 'Silk chiffon', fit: 'Floating, sheer drape', season: 'Spring · Evening', tag: 'new' },
-  { id: 'p23', name: 'Paisley Lace Spectrum', img: 'assets/fabric-23.jpg', desc: 'Ten shades of paisley sequin lace — burgundy, emerald, blush, olive, sky and beyond.', material: 'Sequin guipure lace', fit: 'Structured, ornate', season: 'Bridal · Gala', tag: 'limited' },
-  { id: 'p24', name: 'Waffle Knit Trinity', img: 'assets/fabric-24.jpg', desc: 'Forest, ivory and burgundy waffle-knit cottons stacked on shearling. Cosy, tactile, modern.', material: 'Waffle-knit cotton', fit: 'Plush, textured', season: 'Autumn · Winter', tag: 'new' },
-  { id: 'p25', name: 'Aegean Floral Jacquard', img: 'assets/fabric-25.jpg', desc: 'Teal jacquard with copper, gold and aqua floral bursts. Couture statement textile.', material: 'Silk-blend jacquard', fit: 'Structured, sculptural', season: 'Evening · Couture', tag: 'limited' },
-  { id: 'p26', name: 'Pearl Cascade Couture', img: 'assets/fabric-26.jpg', desc: 'Pure-white pearl-beaded couture panel — hand-set seashell scallops and a flowing train.', material: 'Hand-beaded bridal tulle', fit: 'Body-skim, train', season: 'Bridal', tag: 'limited' },
-  { id: 'p27', name: 'Atelier Beaded Library', img: 'assets/fabric-27.jpg', desc: 'A library of beaded lace in fourteen tones — ivory, sapphire, gold, emerald, rose and more.', material: 'Beaded scallop lace', fit: 'Structured, ornamental', season: 'Bridal · Gala', tag: 'trending' },
-  { id: 'p28', name: 'Gilded Pearl Mermaid', img: 'assets/fabric-28.jpg', desc: 'Liquid gold pearl-beaded mermaid panel with a fluted train. Pure ceremonial richness.', material: 'Gold pearl couture', fit: 'Mermaid, sculpted', season: 'Bridal · Festive', tag: 'limited' },
+/* ---------- Product catalogue (rich luxury data) ----------
+   Each fabric has a real Product ID, colour swatches, recommended uses,
+   occasions, care, styling notes and an exclusivity line — used by the
+   premium product-detail modal.
+----------------------------------------------------------- */
+const USES_OCCASION = {
+  evening:   { uses: ['Evening gowns','Cocktail dresses','Statement blouses','Luxury robes'], occ: ['Gala dinners','Receptions','Anniversaries','After-hours'] },
+  bridal:    { uses: ['Bridal gowns','Reception dresses','Veils & trains','Couture jackets'], occ: ['Weddings','Engagement','Pre-wedding shoots','Religious blessings'] },
+  ceremony:  { uses: ['Agbada','Kaftan','Senator wear','Boubou','Owambe dresses'], occ: ['Weddings','Naming ceremonies','Traditional celebrations','Religious festivals'] },
+  tailoring: { uses: ['Bespoke suits','Blazers','Overcoats','Trousers','Waistcoats'], occ: ['Executive wear','Business meetings','Corporate events','Boardroom'] },
+  shirting:  { uses: ['Luxury shirts','Day dresses','Blouses','Casual jackets'], occ: ['Daywear','Office','Brunch','Travel'] },
+  daywear:   { uses: ['Day dresses','Skirts','Light blouses','Resort wear'], occ: ['Daywear','Brunch','Garden parties','Holiday'] },
+  couture:   { uses: ['Couture gowns','Statement pieces','Editorial fashion','Red-carpet looks'], occ: ['Red carpet','Galas','Editorial shoots','High-fashion events'] },
+};
+const PRODUCT_META = {
+  p1:  { code:'LA-001', kind:'shirting',  feel:'Silky-smooth, light handle', drape:'Light · soft drape', colours:[['Blush','#f1c5c5'],['Sand','#dcc7a4'],['Sky','#bcd6e6'],['Charcoal','#3b3b40']] },
+  p2:  { code:'MSC-202',kind:'evening',   feel:'Sand-washed, weighty silk', drape:'Medium · fluid drape', colours:[['Moss','#4f6a3c'],['Olive','#6b7a3a']] },
+  p3:  { code:'ECS-103',kind:'shirting',  feel:'Crisp, cool to the touch',  drape:'Light · holds shape', colours:[['Ivory','#f4ecdc'],['Wine','#5a1a2e'],['Navy','#1f2a4d'],['Azure','#3d7fb8']] },
+  p4:  { code:'RVS-204',kind:'evening',   feel:'Water-cool, liquid hand',   drape:'Medium · slip drape', colours:[['Royal Violet','#4a2b8c'],['Midnight','#1a1338']] },
+  p5:  { code:'ESM-301',kind:'couture',   feel:'Beaded, stretch-mesh body', drape:'Light · body-skim',   colours:[['Champagne','#e3cfa5'],['Noir','#15131a']] },
+  p6:  { code:'HEM-405',kind:'ceremony',  feel:'Embossed, structured satin',drape:'Medium · structured', colours:[['Garnet','#7a1f2b'],['Forest','#274635'],['Bronze','#7a5a2c']] },
+  p7:  { code:'HEP-407',kind:'ceremony',  feel:'Peached, brushed cotton',   drape:'Medium · tailored',   colours:[['Wine','#5a1a2e'],['Forest','#274635'],['Gold','#b48a3a'],['Black','#0d0d10'],['Burnt Orange','#b5532a'],['Dark Brown','#3d2418']] },
+  p8:  { code:'ASR-808',kind:'tailoring', feel:'Dense, warm-handed wool',   drape:'Heavy · tailoring',   colours:[['Charcoal Check','#2c2f36'],['Navy Pinstripe','#1c2240'],['Storm Grey','#4a4e57']] },
+  p9:  { code:'BWS-901',kind:'tailoring', feel:'Smooth worsted wool',       drape:'Medium · crisp crease',colours:[['Storm Grey','#4a4e57'],['Ivory','#efe6d4'],['Sand','#cbb389'],['Indigo','#23335c']] },
+  p10: { code:'ACS-909',kind:'shirting',  feel:'Smooth, breathable',        drape:'Light · versatile',   colours:[['Coral','#e07a5f'],['Teal','#2d6e7e'],['Plum','#5e2d52'],['Oxford','#1f2a44']] },
+  p11: { code:'PRP-111',kind:'daywear',   feel:'Soft, brushed daywear',     drape:'Light · soft',        colours:[['Rose','#e7b7c3'],['Lavender','#c6b5e0'],['Sage','#b6c8a9'],['Sky','#bcd6e6'],['Mint','#bfe2d0']] },
+  p12: { code:'HWS-112',kind:'daywear',   feel:'Textured waffle-weave',     drape:'Medium · plush',      colours:[['Chocolate','#4b2e1f'],['Sky','#bcd6e6'],['Olive','#6b7a3a'],['Ivory','#efe6d4'],['Navy','#1f2a4d'],['Camel','#b08a55'],['Noir','#15131a']] },
+  p13: { code:'CSB-113',kind:'bridal',    feel:'Structured metallic brocade',drape:'Heavy · regal',      colours:[['Cornflower & Gold','#5c7fbf']] },
+  p14: { code:'OPD-114',kind:'evening',   feel:'Silk-touch, smooth drape',  drape:'Medium · fluid',      colours:[['Olive · Gold Pin','#6b7a3a']] },
+  p15: { code:'SCF-115',kind:'ceremony',  feel:'Pebble-crepe, weighty',     drape:'Medium · tailored',   colours:[['Saffron','#d49a2a']] },
+  p16: { code:'PTM-116',kind:'shirting',  feel:'Crisp pique texture',       drape:'Light · dimensional', colours:[['Mint','#bfe2d0'],['Ivory','#efe6d4'],['Noir','#15131a']] },
+  p17: { code:'LSW-117',kind:'evening',   feel:'Luminous, slip-smooth',     drape:'Light · slip drape',  colours:[['Lilac','#c9b3df']] },
+  p18: { code:'EBC-118',kind:'couture',   feel:'Sheer beaded tulle',        drape:'Light · body-skim',   colours:[['Emerald','#1f6b48']] },
+  p19: { code:'SDW-119',kind:'evening',   feel:'Stretch jersey, fluid',     drape:'Medium · body-skim',  colours:[['Tan','#b08a55'],['Periwinkle','#9aa6d6'],['Rose','#e7b7c3'],['Wine','#5a1a2e'],['Navy','#1f2a4d'],['Sun','#e8c452'],['Plum','#5e2d52'],['Cream','#efe6d4'],['Indigo','#23335c']] },
+  p20: { code:'ALS-120',kind:'ceremony',  feel:'Liquid silk satin',         drape:'Heavy · weighty',     colours:[['Amber','#c98a32']] },
+  p21: { code:'CFC-121',kind:'daywear',   feel:'Soft brushed cotton, fringed',drape:'Medium · soft',     colours:[['Camel','#b08a55']] },
+  p22: { code:'RCV-122',kind:'evening',   feel:'Whisper-thin, sheer chiffon',drape:'Light · floating',   colours:[['Cherry','#a3242a']] },
+  p23: { code:'PLS-123',kind:'bridal',    feel:'Ornate sequin lace',        drape:'Medium · structured', colours:[['Burgundy','#5a1a2e'],['Emerald','#1f6b48'],['Blush','#f1c5c5'],['Olive','#6b7a3a'],['Sky','#bcd6e6']] },
+  p24: { code:'WKT-124',kind:'daywear',   feel:'Plush waffle-knit',         drape:'Medium · cosy',       colours:[['Forest','#274635'],['Ivory','#efe6d4'],['Burgundy','#5a1a2e']] },
+  p25: { code:'AFJ-125',kind:'couture',   feel:'Sculptural floral jacquard',drape:'Heavy · structured',  colours:[['Teal · Copper','#2d6e7e']] },
+  p26: { code:'PCC-126',kind:'bridal',    feel:'Hand-beaded bridal tulle',  drape:'Light · train',       colours:[['Pearl White','#f4ecdc']] },
+  p27: { code:'ABL-127',kind:'bridal',    feel:'Ornamental beaded lace',    drape:'Medium · structured', colours:[['Ivory','#efe6d4'],['Sapphire','#1b3a8a'],['Gold','#b48a3a'],['Emerald','#1f6b48'],['Rose','#e7b7c3']] },
+  p28: { code:'GPM-128',kind:'bridal',    feel:'Gold pearl couture, sculpted',drape:'Heavy · mermaid',   colours:[['Liquid Gold','#c9a64c']] },
+};
+const BASE = [
+  { id:'p1', name:'Spectrum Cotton-Silk Edit', img:'assets/fabric-01.jpg', material:'Cotton-silk blend', season:'All season', tag:'trending', desc:'A signature collection of multi-tone luxury fabrics — soft pastels through refined modern greys, hand-selected for elevated everyday dressing.' },
+  { id:'p2', name:'Moss Silk Crepe', img:'assets/fabric-02.jpg', material:'Mulberry silk crepe', season:'Spring · Summer', tag:'limited', desc:'A deep, living green silk crepe with a sand-washed finish. It drapes like quiet rainfall and feels exceptionally smooth against the skin.' },
+  { id:'p3', name:'Egyptian Cotton Shirting Set', img:'assets/fabric-03.jpg', material:'Egyptian cotton 120s', season:'All season', tag:'trending', desc:'Bespoke-grade shirting cottons in white, wine, navy and azure — crisp, breathable and impeccably refined for shirts of every register.' },
+  { id:'p4', name:'Midnight Sapphire Cotton-Silk Blend', img:'assets/fabric-04.jpg', material:'Cotton-silk charmeuse', season:'Evening · All season', tag:'limited', desc:'A refined cotton-silk textile developed for ceremonial wear and elevated contemporary tailoring. Its silky surface reflects light softly while keeping the structure and durability of premium cotton — luxurious to the touch, distinguished in appearance.' },
+  { id:'p5', name:'Champagne Sequin Mesh', img:'assets/fabric-05.jpg', material:'Hand-beaded tulle', season:'Evening · Gala', tag:'limited', desc:'Hand-beaded across a stretch tulle base — designed for couture evening pieces that catch light like jewellery.' },
+  { id:'p6', name:'Heritage Embossed Satin', img:'assets/fabric-06.jpg', material:'Satin jacquard', season:'Autumn · Winter', tag:'new', desc:'Floral-embossed satin in mature jewel tones — quietly opulent, ideal for occasion wear and richly tailored pieces.' },
+  { id:'p7', name:'Harmattan Brushed Cotton', img:'assets/fabric-07.jpg', material:'Brushed cotton twill', season:'Autumn · Festive', tag:'new', desc:'Wine, dark green, gold, black, burnt orange and dark brown — the season palette in a soft peached cotton, made for ceremony and modern tailoring.' },
+  { id:'p8', name:'Italian Wool Suiting Rolls', img:'assets/fabric-08.jpg', material:'Super 150s Italian wool', season:'Autumn · Winter', tag:'trending', desc:'Italian wool checks and pinstripes — the foundation of bespoke suits, overcoats and a wardrobe that ages beautifully.' },
+  { id:'p9', name:'Worsted Wool Suiting Stack', img:'assets/fabric-10.jpg', material:'Worsted wool', season:'All season', tag:'trending', desc:'Worsted wools in storm grey, ivory, sand and indigo — they hold a crease beautifully and tailor into sharp, intelligent silhouettes.' },
+  { id:'p10', name:'Capsule Shirting Palette', img:'assets/fabric-09.jpg', material:'Cotton-poly blend', season:'All season', tag:'new', desc:'A complete wardrobe palette in one capsule — coral, teal, plum and oxford. Versatile shirting weight for daily luxury.' },
+  { id:'p11', name:'Pastel Daywear Pyramid', img:'assets/fabric-11.jpg', material:'Premium cotton blend', season:'Spring · Summer', tag:'new', desc:'A pyramid of pastel rolls — rose, lavender, sage, sky and mint. The soft palette of modern daywear.' },
+  { id:'p12', name:'Honeycomb Waffle Collection', img:'assets/fabric-12.jpg', material:'Waffle-weave cotton', season:'All season', tag:'trending', desc:'Layered waffle-weave textures across seven shades — plush, tactile and quietly contemporary for casual luxury.' },
+  { id:'p13', name:'Celestial Cornflower Brocade', img:'assets/fabric-13.jpg', material:'Metallic jacquard brocade', season:'Evening · Bridal', tag:'limited', desc:'Cornflower blue ground with gold-foiled botanical brocade — a statement occasion fabric for bridal, gala and ceremonial wear.' },
+  { id:'p14', name:'Olive Pinstripe Silk-Touch', img:'assets/fabric-14.jpg', material:'Silk-touch polyester', season:'All season', tag:'trending', desc:'Olive green ground with delicate gold pinstripes. A soft, fluid drape with the discipline of quiet luxury.' },
+  { id:'p15', name:'Saffron Heavy Crepe', img:'assets/fabric-15.jpg', material:'Heavy crepe', season:'Autumn · Festive', tag:'new', desc:'Deep saffron crepe with raw fringed selvedge — warm, rich, ceremonial. Tailors into structured occasion pieces.' },
+  { id:'p16', name:'Pique Cotton Trio', img:'assets/fabric-16.jpg', material:'Pique cotton', season:'Spring · Summer', tag:'trending', desc:'A trio of fine pique-textured cottons in mint, ivory and noir — the modern minimal staples of an elevated wardrobe.' },
+  { id:'p17', name:'Lilac Satin Whisper', img:'assets/fabric-17.jpg', material:'Premium satin', season:'Spring · Evening', tag:'new', desc:'Soft lilac satin with raw-edge selvedge. Romantic and luminous against the skin — slip-drape evening luxury.' },
+  { id:'p18', name:'Emerald Beaded Couture', img:'assets/fabric-18.jpg', material:'Hand-beaded tulle', season:'Gala · Bridal', tag:'limited', desc:'Deep emerald tulle hand-beaded with floral motifs and iridescent sequins. Couture-grade fabric, made for show-stopping pieces.' },
+  { id:'p19', name:'Spectrum Stretch Drape Wall', img:'assets/fabric-19.jpg', material:'Stretch jersey drape', season:'All season', tag:'trending', desc:'Floor-length drape rolls in nine shades — body-flattering and ruched, ideal for elegant evening silhouettes.' },
+  { id:'p20', name:'Amber Liquid Silk', img:'assets/fabric-20.jpg', material:'Liquid silk satin', season:'Evening · Festive', tag:'limited', desc:'Liquid amber silk with luminous folds — ceremonial richness for show-stopping ceremonial and bridal pieces.' },
+  { id:'p21', name:'Camel Fringe Cotton', img:'assets/fabric-21.jpg', material:'Premium brushed cotton', season:'All season', tag:'new', desc:'Warm camel cotton with hand-frayed fringe edges — a soft, structured textile that holds its shape with quiet warmth.' },
+  { id:'p22', name:'Rouge Chiffon Veil', img:'assets/fabric-22.jpg', material:'Silk chiffon', season:'Spring · Evening', tag:'new', desc:'Cherry-red chiffon with whisper-thin selvedge. Romantic, weightless, luminous — for veils, overlays and floating evening gowns.' },
+  { id:'p23', name:'Paisley Sequin Lace Spectrum', img:'assets/fabric-23.jpg', material:'Sequin guipure lace', season:'Bridal · Gala', tag:'limited', desc:'Ten shades of paisley sequin lace — burgundy, emerald, blush, olive, sky and beyond. Ornate, sculptural, statement-grade.' },
+  { id:'p24', name:'Waffle Knit Trinity', img:'assets/fabric-24.jpg', material:'Waffle-knit cotton', season:'Autumn · Winter', tag:'new', desc:'Forest, ivory and burgundy waffle-knit cottons stacked on shearling — cosy, tactile and quietly modern.' },
+  { id:'p25', name:'Aegean Floral Jacquard', img:'assets/fabric-25.jpg', material:'Silk-blend jacquard', season:'Evening · Couture', tag:'limited', desc:'Teal jacquard with copper, gold and aqua floral bursts. A couture statement textile, sculptural and luminous.' },
+  { id:'p26', name:'Pearl Cascade Bridal Couture', img:'assets/fabric-26.jpg', material:'Hand-beaded bridal tulle', season:'Bridal', tag:'limited', desc:'A pure-white pearl-beaded couture panel — hand-set seashell scallops and a flowing train. Editioned for one bride per season.' },
+  { id:'p27', name:'Beaded Lace Library', img:'assets/fabric-27.jpg', material:'Beaded scallop lace', season:'Bridal · Gala', tag:'trending', desc:'A library of beaded lace in fourteen tones — ivory, sapphire, gold, emerald, rose and more. Ornamental and ready for couture.' },
+  { id:'p28', name:'Gilded Pearl Mermaid', img:'assets/fabric-28.jpg', material:'Gold pearl couture', season:'Bridal · Festive', tag:'limited', desc:'Liquid gold pearl-beaded mermaid panel with a fluted train — pure ceremonial richness, sculpted by hand.' },
 ];
+const PRODUCTS = BASE.map(b => {
+  const m = PRODUCT_META[b.id] || {};
+  const u = USES_OCCASION[m.kind] || USES_OCCASION.daywear;
+  return Object.assign({}, b, {
+    code: m.code || b.id.toUpperCase(),
+    fit: m.drape || 'Refined drape',
+    feel: m.feel || 'Soft, premium hand',
+    drape: m.drape || 'Refined drape',
+    colours: m.colours || [['Signature','#b48a3a']],
+    uses: u.uses, occasions: u.occ,
+    care: 'Dry-clean recommended. Iron on low through a pressing cloth. Store rolled in tissue.',
+    styling: 'Pair with neutral tailoring for daywear, or with metallic accents and rich jewel tones for evening and ceremonial looks.',
+    exclusive: m.kind === 'bridal' || b.tag === 'limited'
+      ? '✦ Limited yardage — numbered cut, never re-issued.'
+      : '✦ Hand-finished at the atelier — limited monthly availability.',
+  });
+});
+// Quick filename → product lookup (for auto-binding every fabric image on page)
+const PRODUCT_BY_FILE = PRODUCTS.reduce((acc,p)=>{ acc[p.img.split('/').pop()] = p; return acc; }, {});
 
 /* ---------- Render product cards ---------- */
 function productCard(p) {
   return `
-    <article class="product-card" data-id="${p.id}">
-      <div class="pc-image">
+    <article class="product-card" data-id="${p.id}" data-pid="${p.id}">
+      <div class="pc-image" data-pid="${p.id}">
         <span class="pc-badge ${p.tag}">${p.tag === 'limited' ? 'Limited' : p.tag === 'new' ? 'New In' : 'Trending'}</span>
-        <img src="${p.img}" alt="${p.name}" loading="lazy"/>
+        <img src="${p.img}" alt="${p.name}" loading="lazy" data-pid="${p.id}"/>
+        <span class="pc-hover-cta">View Details →</span>
       </div>
       <div class="pc-body">
         <h3 class="pc-name">${p.name}</h3>
@@ -51,8 +114,8 @@ function productCard(p) {
         <p class="pc-desc">${p.desc}</p>
         <p class="pc-price-on-request">Price on Request</p>
         <div class="pc-actions">
-          <button class="btn btn-primary" data-add="${p.id}">Add to Bag</button>
-          <button class="btn btn-ghost" data-order="${p.id}">Enquire</button>
+          <button class="btn btn-primary" data-view="${p.id}">View Details</button>
+          <button class="btn btn-ghost" data-order="${p.id}">Order on WhatsApp</button>
         </div>
       </div>
     </article>
@@ -142,7 +205,21 @@ function buildCartMessage() {
   return msg;
 }
 function buildProductMessage(p) {
-  return `Hello Lydia's Apparel ✦\nI'm interested in: ${p.name}\nMaterial: ${p.material}\n\nCould you advise on current price, available yardage and delivery?`;
+  const colour = (p._selectedColour || (p.colours && p.colours[0] && p.colours[0][0]) || 'As shown');
+  const qty = p._enquiryYardage ? `\nYardage: ${p._enquiryYardage}` : '';
+  return (
+`Hello Lydia's Apparel ✦
+
+I am interested in the *${p.name}*.
+• Product ID: ${p.code}
+• Colour: ${colour}
+• Material: ${p.material}
+• Feel: ${p.feel}
+• Drape: ${p.drape}
+• Best for: ${p.uses.slice(0,3).join(', ')}${qty}
+
+Please share availability, current pricing and delivery options to my location. Thank you.`
+  );
 }
 
 /* ---------- Cart open/close ---------- */
@@ -159,11 +236,18 @@ document.getElementById('cartCheckout').addEventListener('click', () => {
 document.addEventListener('click', e => {
   const add = e.target.closest('[data-add]');
   if (add) { addToCart(add.dataset.add); return; }
+  const view = e.target.closest('[data-view]');
+  if (view) { openProduct(view.dataset.view); return; }
   const ord = e.target.closest('[data-order]');
   if (ord) { const p = PRODUCTS.find(x => x.id === ord.dataset.order); if (p) window.open(waUrl(buildProductMessage(p)), '_blank'); return; }
   const inc = e.target.closest('[data-inc]'); if (inc) { setQty(inc.dataset.inc, +1); return; }
   const dec = e.target.closest('[data-dec]'); if (dec) { setQty(dec.dataset.dec, -1); return; }
   const rm = e.target.closest('[data-rm]'); if (rm) { removeFromCart(rm.dataset.rm); return; }
+  // Auto-clickable fabric — any element carrying data-pid
+  const pidEl = e.target.closest('[data-pid]');
+  if (pidEl && !e.target.closest('button, a, [data-view], [data-order], [data-add]')) {
+    openProduct(pidEl.dataset.pid); return;
+  }
 });
 
 /* WhatsApp links */
@@ -479,6 +563,7 @@ if (window.gsap && window.ScrollTrigger) {
     });
   });
 })();
+
 /* =========================================================
    HOUSE EDITORIAL — auto-sliding carousel
    ========================================================= */
@@ -495,10 +580,12 @@ if (window.gsap && window.ScrollTrigger) {
   function play() { clearInterval(timer); timer = setInterval(() => go(i + 1), 4500); }
   thumbs.forEach(t => t.addEventListener('click', () => { go(+t.dataset.i); play(); }));
   play();
+
   if (window.gsap && window.ScrollTrigger) {
     gsap.from('.house-editorial', { y: 60, opacity: 0, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: '.house-editorial', start: 'top 85%' } });
   }
 })();
+
 /* =========================================================
    LOOM REVEAL — scroll-triggered cinematic reveal
    ========================================================= */
@@ -513,3 +600,298 @@ if (window.gsap && window.ScrollTrigger) {
     scrollTrigger: { trigger: '.season-feature', start: 'top 85%' }
   });
 })();
+
+/* =========================================================
+   LUXURY PRODUCT DETAIL MODAL
+   ========================================================= */
+const PD = {
+  el: document.getElementById('pdModal'),
+  bd: document.getElementById('pdBackdrop'),
+  img: document.getElementById('pdImg'),
+  spin: document.getElementById('pdSpin'),
+  thumbs: document.getElementById('pdThumbs'),
+  name: document.getElementById('pdName'),
+  code: document.getElementById('pdCode'),
+  lead: document.getElementById('pdLead'),
+  material: document.getElementById('pdMaterial'),
+  feel: document.getElementById('pdFeel'),
+  drape: document.getElementById('pdDrape'),
+  season: document.getElementById('pdSeason'),
+  uses: document.getElementById('pdUses'),
+  occ: document.getElementById('pdOccasions'),
+  cols: document.getElementById('pdColours'),
+  styling: document.getElementById('pdStyling'),
+  care: document.getElementById('pdCare'),
+  excl: document.getElementById('pdExclusive'),
+  kicker: document.getElementById('pdKicker'),
+  order: document.getElementById('pdOrder'),
+  add: document.getElementById('pdAdd'),
+  consult: document.getElementById('pdConsult'),
+  rotate: document.getElementById('pdRotate'),
+  zoom: document.getElementById('pdZoom'),
+  close: document.getElementById('pdClose'),
+  current: null,
+};
+
+function openProduct(id) {
+  const p = PRODUCTS.find(x => x.id === id);
+  if (!p || !PD.el) return;
+  PD.current = p;
+  p._selectedColour = (p.colours && p.colours[0] && p.colours[0][0]) || 'As shown';
+  PD.img.src = p.img; PD.img.alt = p.name;
+  PD.name.textContent = p.name;
+  PD.code.textContent = p.code;
+  PD.lead.textContent = p.desc;
+  PD.material.textContent = p.material;
+  PD.feel.textContent = p.feel;
+  PD.drape.textContent = p.drape;
+  PD.season.textContent = p.season;
+  PD.kicker.textContent = (p.tag === 'limited' ? 'Limited Luxury Fabric' : p.tag === 'new' ? 'New Arrival' : 'Customer Favourite');
+  PD.uses.innerHTML = p.uses.map(u => `<li>${u}</li>`).join('');
+  PD.occ.innerHTML = p.occasions.map(u => `<li>${u}</li>`).join('');
+  PD.cols.innerHTML = p.colours.map(([nm, hex], i) => `
+    <button class="pd-col ${i===0?'is-on':''}" data-col="${nm}" title="${nm}">
+      <span style="background:${hex}"></span><em>${nm}</em>
+    </button>`).join('');
+  PD.styling.textContent = p.styling;
+  PD.care.textContent = p.care;
+  PD.excl.textContent = p.exclusive;
+  PD.consult.href = waUrl(`Hello Lydia's Apparel ✦\nI'd like to speak with a fabric consultant about the ${p.name} (${p.code}).`);
+  // thumbs (variant views — reuse main image + 3 nearest fabrics for visual variety)
+  // "Also explore" — clicking a side thumb loads that fabric's FULL details (fixes bug
+  // where every thumb showed the first fabric's description).
+  const idx = PRODUCTS.findIndex(x => x.id === p.id);
+  const extra = [];
+  for (let off = 1; extra.length < 4; off++) {
+    const a = PRODUCTS[(idx + off) % PRODUCTS.length];
+    if (a && a.id !== p.id) extra.push(a);
+    if (off > PRODUCTS.length) break;
+  }
+  PD.thumbs.innerHTML =
+    `<p class="pd-thumbs-label">Also explore →</p>` +
+    [p, ...extra].map((x, i) =>
+      `<button class="pd-thumb ${i===0?'is-on':''}" data-pid="${x.id}" title="${x.name}">
+         <img src="${x.img}" alt="${x.name}"/>
+         <em>${x.name}</em>
+       </button>`
+    ).join('') +
+    `<button class="pd-thumb pd-thumb-cmp" data-add-compare="${p.id}" title="Add to comparison">＋ Compare</button>`;
+  // open
+  PD.el.classList.add('is-open');
+  PD.bd.classList.add('is-open');
+  PD.el.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  PD.spin.classList.remove('spinning'); // reset
+}
+function closeProduct() {
+  PD.el.classList.remove('is-open');
+  PD.bd.classList.remove('is-open');
+  PD.el.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+if (PD.el) {
+  PD.close.addEventListener('click', closeProduct);
+  PD.bd.addEventListener('click', closeProduct);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProduct(); });
+  PD.order.addEventListener('click', () => { if (PD.current) window.open(waUrl(buildProductMessage(PD.current)), '_blank'); });
+  PD.add.addEventListener('click', () => { if (PD.current) { addToCart(PD.current.id); } });
+  PD.rotate.addEventListener('click', () => { PD.spin.classList.toggle('spinning'); });
+  PD.zoom.addEventListener('click', () => { PD.spin.classList.toggle('zoomed'); });
+  PD.cols.addEventListener('click', e => {
+    const b = e.target.closest('[data-col]'); if (!b || !PD.current) return;
+    PD.cols.querySelectorAll('.pd-col').forEach(x => x.classList.remove('is-on'));
+    b.classList.add('is-on'); PD.current._selectedColour = b.dataset.col;
+  });
+  PD.thumbs.addEventListener('click', e => {
+    const addCmp = e.target.closest('[data-add-compare]');
+    if (addCmp) { addToCompare(addCmp.dataset.addCompare); toast('Added to comparison'); return; }
+    const t = e.target.closest('[data-pid]'); if (!t) return;
+    // Re-open the modal for the clicked fabric — refreshes ALL details (fixes
+    // the previous bug where side thumbs only swapped the main image but kept
+    // the original fabric's description and metadata).
+    openProduct(t.dataset.pid);
+  });
+  // 360° drag spin
+  let pdDrag = false, pdSX = 0, pdRot = 0, pdStart = 0;
+  PD.spin.addEventListener('pointerdown', e => { pdDrag = true; pdSX = e.clientX; pdStart = pdRot; PD.spin.classList.remove('spinning'); });
+  addEventListener('pointermove', e => {
+    if (!pdDrag) return;
+    pdRot = pdStart + (e.clientX - pdSX) * 0.6;
+    PD.img.style.transform = `rotateY(${pdRot}deg)`;
+  });
+  addEventListener('pointerup', () => { pdDrag = false; });
+}
+
+/* ========== Auto-bind every fabric image on the page to its product ========== */
+(function autoBindFabricImages() {
+  document.querySelectorAll('img').forEach(img => {
+    const src = (img.getAttribute('src') || '').split('/').pop();
+    const p = PRODUCT_BY_FILE[src];
+    if (!p) return;
+    if (!img.dataset.pid) img.dataset.pid = p.id;
+    img.classList.add('is-clickable-fabric');
+    img.style.cursor = 'pointer';
+    if (!img.getAttribute('title')) img.setAttribute('title', `View ${p.name}`);
+  });
+  // also tag the rich containers
+  document.querySelectorAll('.float-card, .cube-face, .orbit-thumb, .loom-roll, .he-thumb, .he-slide, .sf-card, .swiper-slide, .limited-card, .seasonal-stack img, .material-imgs img, .slide')
+    .forEach(el => {
+      const im = el.querySelector('img'); if (!im) return;
+      const src = (im.getAttribute('src') || '').split('/').pop();
+      const p = PRODUCT_BY_FILE[src]; if (!p) return;
+      if (!el.dataset.pid) el.dataset.pid = p.id;
+      el.style.cursor = 'pointer';
+    });
+})();
+
+/* =========================================================
+   FABRIC COMPARISON TOOL
+   - Floating "Compare" tray docked above the WhatsApp button
+   - Add up to 3 fabrics from any product card or the detail modal
+   - "Compare now" opens a side-by-side modal of full specs
+   - One-tap WhatsApp enquiry for any compared fabric
+   ========================================================= */
+(function fabricCompare(){
+  const MAX = 3;
+  const state = []; // array of product ids
+
+  // ---- Tray ----
+  const tray = document.createElement('div');
+  tray.className = 'cmp-tray';
+  tray.innerHTML = `
+    <div class="cmp-tray-head">
+      <span>Compare Fabrics</span>
+      <button class="cmp-clear" title="Clear all">Clear</button>
+    </div>
+    <div class="cmp-slots"></div>
+    <button class="btn btn-primary cmp-go">Compare now</button>
+    <p class="cmp-hint">Add up to 3 fabrics to compare side-by-side.</p>
+  `;
+  document.body.appendChild(tray);
+  const slotsEl = tray.querySelector('.cmp-slots');
+  const goBtn   = tray.querySelector('.cmp-go');
+  const clrBtn  = tray.querySelector('.cmp-clear');
+
+  // ---- Modal ----
+  const modal = document.createElement('div');
+  modal.className = 'cmp-modal';
+  modal.innerHTML = `
+    <div class="cmp-backdrop"></div>
+    <div class="cmp-dialog" role="dialog" aria-modal="true">
+      <button class="cmp-close" aria-label="Close">×</button>
+      <header class="cmp-head">
+        <p class="kicker">Fabric Comparison</p>
+        <h3>Side-by-side · Lydia's Atelier</h3>
+      </header>
+      <div class="cmp-table"></div>
+    </div>`;
+  document.body.appendChild(modal);
+  const tableEl = modal.querySelector('.cmp-table');
+  modal.querySelector('.cmp-backdrop').addEventListener('click', closeModal);
+  modal.querySelector('.cmp-close').addEventListener('click', closeModal);
+
+  function openModal(){ modal.classList.add('is-open'); document.body.style.overflow='hidden'; }
+  function closeModal(){ modal.classList.remove('is-open'); document.body.style.overflow=''; }
+
+  function render(){
+    tray.classList.toggle('is-on', state.length > 0);
+    slotsEl.innerHTML =
+      state.map(id => {
+        const p = PRODUCTS.find(x => x.id === id); if (!p) return '';
+        return `<div class="cmp-slot" title="${p.name}">
+          <img src="${p.img}" alt="${p.name}"/>
+          <button class="cmp-rm" data-rm="${p.id}" aria-label="Remove">×</button>
+        </div>`;
+      }).join('') +
+      Array.from({length: Math.max(0, MAX - state.length)}, () =>
+        `<div class="cmp-slot empty">+</div>`).join('');
+    goBtn.disabled = state.length < 2;
+    goBtn.textContent = state.length < 2 ? `Add ${2 - state.length} more` : `Compare now (${state.length})`;
+  }
+
+  function addCompare(id){
+    if (state.includes(id)) return;
+    if (state.length >= MAX) state.shift();
+    state.push(id);
+    render();
+  }
+  function remove(id){
+    const i = state.indexOf(id); if (i > -1) state.splice(i, 1);
+    render();
+  }
+  // expose for the modal "+ Compare" button
+  window.__addToCompare = addCompare;
+
+  slotsEl.addEventListener('click', e => {
+    const rm = e.target.closest('[data-rm]'); if (rm) remove(rm.dataset.rm);
+  });
+  clrBtn.addEventListener('click', () => { state.length = 0; render(); });
+  goBtn.addEventListener('click', () => {
+    if (state.length < 2) return;
+    const items = state.map(id => PRODUCTS.find(p => p.id === id)).filter(Boolean);
+    const rows = [
+      ['Product ID',   p => p.code],
+      ['Material',     p => p.material],
+      ['Feel',         p => p.feel],
+      ['Drape',        p => p.drape],
+      ['Season',       p => p.season],
+      ['Best for',     p => p.uses.slice(0,3).join(', ')],
+      ['Occasion',     p => p.occasions.slice(0,3).join(', ')],
+      ['Colours',      p => p.colours.map(c => `<span class="cmp-sw" style="background:${c[1]}" title="${c[0]}"></span>`).join('')],
+      ['Exclusivity',  p => p.exclusive],
+      ['Care',         p => p.care],
+    ];
+    tableEl.innerHTML = `
+      <div class="cmp-cols" style="--n:${items.length}">
+        ${items.map(p => `
+          <div class="cmp-col">
+            <div class="cmp-col-img"><img src="${p.img}" alt="${p.name}" data-pid="${p.id}"/></div>
+            <h4>${p.name}</h4>
+            <p class="cmp-meta">${p.material}</p>
+            <a class="btn btn-primary cmp-wa" href="${waUrl(buildProductMessage(p))}" target="_blank" rel="noopener">Order on WhatsApp</a>
+          </div>`).join('')}
+      </div>
+      <table class="cmp-grid">
+        ${rows.map(([label, get]) => `
+          <tr><th>${label}</th>${items.map(p => `<td>${get(p)}</td>`).join('')}</tr>
+        `).join('')}
+      </table>`;
+    openModal();
+  });
+
+  // Add small "Compare" button to every product card
+  function decorateCards(){
+    document.querySelectorAll('.product-card').forEach(card => {
+      if (card.querySelector('.pc-cmp')) return;
+      const id = card.dataset.id; if (!id) return;
+      const btn = document.createElement('button');
+      btn.className = 'pc-cmp'; btn.type = 'button';
+      btn.dataset.compare = id; btn.title = 'Add to comparison';
+      btn.textContent = '⇄ Compare';
+      card.appendChild(btn);
+    });
+  }
+  decorateCards();
+  new MutationObserver(decorateCards).observe(document.body, { childList:true, subtree:true });
+
+  // Global click for [data-compare]
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-compare]');
+    if (!b) return;
+    e.preventDefault(); e.stopPropagation();
+    addCompare(b.dataset.compare);
+    toast('Added to comparison');
+  });
+
+  // Re-open product detail from inside compare modal
+  tableEl && tableEl.addEventListener('click', e => {
+    const i = e.target.closest('img[data-pid]');
+    if (i) { closeModal(); openProduct(i.dataset.pid); }
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  render();
+})();
+
+// Bridge used by the modal's "＋ Compare" button
+function addToCompare(id){ if (window.__addToCompare) window.__addToCompare(id); }
