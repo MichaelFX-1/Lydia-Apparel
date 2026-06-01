@@ -335,7 +335,7 @@ const io = new IntersectionObserver(entries => {
     if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }
   });
 }, { threshold: 0.12 });
-document.querySelectorAll('.reveal, .section-head, .product-card, .collection-card, .limited-card, .exp-card, .craft-step, .dl-card, .testi-grid blockquote').forEach(el => {
+document.querySelectorAll('.reveal, .section-head, .collection-card, .limited-card, .exp-card, .craft-step, .dl-card, .testi-grid blockquote').forEach(el => {
   el.classList.add('reveal');
   io.observe(el);
 });
@@ -351,8 +351,12 @@ if (window.gsap) {
     gsap.from(el, { y: 60, opacity: 0, duration: 1.2, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 85%' } });
   });
   gsap.utils.toArray('.product-card').forEach((el, i) => {
-    gsap.from(el, { y: 50, opacity: 0, duration: 0.9, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 90%' } });
+    // animate-in only (no initial opacity:0) so cards are always visible even if ScrollTrigger
+    // mis-calculates positions due to lazy-loaded images / layout shift in dynamic grids.
+    gsap.from(el, { y: 40, duration: 0.9, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 95%' } });
   });
+  // Refresh ScrollTrigger once images finish loading so triggers use correct positions.
+  window.addEventListener('load', () => { if (window.ScrollTrigger) ScrollTrigger.refresh(); });
 }
 
 /* ---------- Slider ---------- */
